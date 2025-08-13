@@ -11,10 +11,22 @@ body {
   line-height: 1.5;
 }
 
+/* Smooth fade-in for the whole page */
+body {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 header {
   text-align: center;
   padding: 20px;
   background: #f0a89c;
+  /* Subtle shadow for depth */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .profile-img {
@@ -22,6 +34,12 @@ header {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  /* Smooth scaling on hover */
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
 }
 
 h1 {
@@ -43,10 +61,13 @@ nav a {
   margin: 0 10px;
   text-decoration: none;
   color: #333;
+  /* Smooth color change on hover */
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
   text-decoration: underline;
+  color: #004499;
 }
 
 .section {
@@ -66,13 +87,13 @@ h2 {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
   gap: 10px;
 }
 
 .education-item {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
   gap: 10px;
 }
 
@@ -80,14 +101,18 @@ h2 {
   border: 1px solid #ccc;
   padding: 10px;
   background: #fafafa;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .card h3 {
   font-size: 16px;
   margin-bottom: 5px;
 }
-
-
 
 .skills-list {
   list-style: none;
@@ -100,18 +125,22 @@ h2 {
   background: #eee;
   padding: 5px 10px;
   border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-
+.skills-list li:hover {
+  background-color: #dcdcdc;
+}
 
 #contact a {
   color: #0066cc;
+  transition: color 0.3s ease;
 }
 
 #contact a:hover {
   text-decoration: underline;
+  color: #004499;
 }
-
 
 footer {
   text-align: center;
@@ -119,4 +148,21 @@ footer {
   background: #f2f2f2;
   font-size: 14px;
   margin-top: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 20px;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .profile-img {
+    width: 100px;
+    height: 100px;
+  }
 }
